@@ -1,4 +1,4 @@
-from .helpers import getSecretNum, getClues
+from src.helpers import getSecretNum, getClues
 
 
 NUM_DIGITS: int = 3
@@ -23,10 +23,10 @@ def main():
         print('The Numbers been decided, let\'s begin guess game')
 
         numGuesses: int = 1
-        while numGuesses < MAX_GUESSES:
+        while numGuesses <= MAX_GUESSES:
             guess: str = ''
-            while len(guess) < NUM_DIGITS and guess.isdecimal():
-                print('Enter your guess\n')
+            while len(guess) != NUM_DIGITS or not guess.isdecimal():
+                print('Enter your guess #{}\n'.format(numGuesses))
                 guess = input('> ')
             
             clues = getClues(guess, secretNum)
@@ -34,6 +34,7 @@ def main():
             numGuesses += 1
 
             if guess == secretNum:
+                print('Yay, that was the right guess')
                 break
             
             if numGuesses>MAX_GUESSES:
