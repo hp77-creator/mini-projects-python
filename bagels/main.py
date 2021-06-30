@@ -1,4 +1,3 @@
-import random
 from .helpers import getSecretNum, getClues
 
 
@@ -20,7 +19,7 @@ def main():
 
     while True:
 
-        secretNum: str = getSecretNum()
+        secretNum: str = getSecretNum(NUM_DIGITS)
         print('The Numbers been decided, let\'s begin guess game')
 
         numGuesses: int = 1
@@ -40,11 +39,17 @@ def main():
             if numGuesses>MAX_GUESSES:
                 print('You ran out of guesses')
                 print('The Secret Number was {}'.format(secretNum))
-                break
+            
+        print('Do you want to play again -> (y or n)?')
+        if not input('> ').lower().startswith('y'):
+            break
+    
+    print('Thanks for playing')
 
 
 
-
+if __name__ == '__main__':
+    main()
 
 
 
