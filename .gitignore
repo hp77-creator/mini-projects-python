@@ -1,2 +1,5 @@
 #vscode related files and folders
 .vscode
+
+# python cache files
+__pycache__
